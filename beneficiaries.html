@@ -2,37 +2,70 @@
 <html>
     <head>
         <title>Member Portal</title>
-        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="mycss.css">
+        <link rel="stylesheet" href="bootstrap/js/bootstrap.min.js">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            .bs-example{
+                margin: 20px;
+            }
+            .accordion .fa{
+                margin-right: 0.5rem;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                // Add minus icon for collapse element which is open by default
+                $(".collapse.show").each(function(){
+                    $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+                });
 
+                // Toggle plus minus icon on show hide of collapse element
+                $(".collapse").on('show.bs.collapse', function(){
+                    $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+                }).on('hide.bs.collapse', function(){
+                    $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+                });
+            });
+        </script>
     </head>
     <body>
-        <div class="container">
+        <div class = container>
             <nav class="nav">
-                
+
             </nav>
-            <div>
-               <h3>Membership number: 17184420</h3>
-                <div class="bs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a href="#allbeneficiaries" class="nav-link">All Beneficiaries</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#benefits" class="nav-link">Benefits</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#messages" class="nav-link">Banking details</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contacts & Address details</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Add/remove dependant</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="allbeneficiaries">
+            <h3>Membership number: 17184420</h3>
+            <div class="bs-example">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#allbeneficiaries" class="nav-link active" data-toggle="tab">Family</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#benefits" class="nav-link" data-toggle="tab">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#bank" class="nav-link" data-toggle="tab">Banking Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link" data-toggle="tab">Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#add" class="nav-link" data-toggle="tab">Add/remove dependant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#downloads" class="nav-link" data-toggle="tab">Downloads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#providers" class="nav-link" data-toggle="tab">Service Providers</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="allbeneficiaries">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -56,43 +89,123 @@
                                         <td>Principal Member</td>
                                     </tr>
                                     <tr>
-                                        <td>0</td>
-                                        <td>Clark</td>
+                                        <td>1</td>
+                                        <td>July</td>
                                         <td>Kent</td>
                                         <td>Male</td>
                                         <td>09-05-1992</td>
                                         <td>Active</td>
-                                        <td>Principal Member</td>
+                                        <td>Spouse</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane fade" id="benefits">
-                            <h4 class="mt-2">Profile tab content</h4>
-                            <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
-                        </div>
-                        <div class="tab-pane fade" id="messages">
-                            <h4 class="mt-2">Messages tab content</h4>
-                            <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit velit. Donec at erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat massa vestibulum laoreet. Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci lorem. Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus et magnis.</p>
+                    <div class="tab-pane fade" id="benefits">
+                       <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-plus"></i> Major Medical Benefits</button>									
+                                    </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>HOSPITALISATION</li>
+                                            <li>HOSPITAL ALTERNATIVES</li>
+                                            <li>PARAMEDICAL SERVICES</li>
+                                            <li>BLOOD TRANSFUSION</li>
+                                            <li>MATERNITY</li>
+                                            <li>MAXILLO FACIAL SURGERY</li>
+                                            <li>MENTAL HEALTH (In-Hospital,Psychiatrist Hospitalization)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"><i class="fa fa-plus"></i> MAjor Desease Benefits</button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>ONCOLOGY(includes chemo & pathology)</li>
+                                            <li>ORGAN TRANSPLANT</li>
+                                            <li>RENAL DIALYSIS (includes pathology)</li>
+                                            <li>SPECIALIZED RADIOLOGY</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"><i class="fa fa-plus"></i>PROSTHESIS BENEFIT, with sub limits</button>                     
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>INTERNAL DEVICES</li>
+                                            <li>EXTERNAL/APPLIANCES</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h2 class="mb-0">
+                                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"><i class="fa fa-plus"></i>Day to Day Benefits</button>                     
+                                    </h2>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li>GP visits</li>
+                                            <li>Specialists</li>
+                                            <li>Supplements(Non-prescribed)</li>
+                                            <li>Over the counter - OTC</li>
+                                            <li>Prescribed Medication</li>
+                                            <li>Immune Deficiency</li>
+                                            <li>Chronic medication</li>
+                                            <li>Dentistry(D2D)</li>
+                                            <li>Optometry</li>
+                                            <li>PATHOLOGY, PHYSICAL THERAPY & RADIOLOGY (Combined)</li>
+                                            <li>MENTAL HEALTH (Out-of-hospital, pbpa)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="bank">
+                        <h2 class="mt-2">PM active banking details</h2>
+                        <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit velit. Donec at erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat massa vestibulum laoreet. Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci lorem. Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus et magnis.</p>
+                    </div>
+                    <div class="tab-pane fade" id="contact">
+                        <h2 class="mt-2">Contacts and addresses</h2>
+                        <p>Khubetsoana</p>
+                    </div>
+                    <div class="tab-pane fade" id="add">
+                        <p>Make a request to add/remove dependant</p>
+                    </div>
+                    <div class="tab-pane fade" id="downloads">
+                        <h2 class="mt-2">Get your downloads below:</h2>
+                        <ol>
+                            <li>Membership certificate</li>
+                            <li>Membership confirmation</li>
+                            <li>Member application From</li>
+                            <li>Member Chronic Form</li>
+                        </ol>
+                    </div>
+                    <div class="tab-pane fade" id="providers">
+                        <h2 class="mt-2">Our DSP</h2>
+                        
+                    </div>
                 </div>
-                
-                    
             </div>
-            
-            <footer>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>Copyright © 2020 Raleche Kebitsamang</p>
-                    </div>
-                    <div class="col-md-6 text-md-right">
-                        <a href="#" class="text-dark">Terms of Use</a> 
-                        <span class="text-muted mx-2">|</span> 
-                        <a href="#" class="text-dark">Privacy Policy</a>
-                    </div>
-                </div>
-            </footer>
-        </div>
+        </div>    
     </body>
 </html>
